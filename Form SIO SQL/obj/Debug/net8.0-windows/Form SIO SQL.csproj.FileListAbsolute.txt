@@ -1,0 +1,28 @@
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\Form SIO SQL.exe
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\Form SIO SQL.deps.json
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\Form SIO SQL.runtimeconfig.json
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\Form SIO SQL.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\Form SIO SQL.pdb
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\MySql.Data.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\Google.Protobuf.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\Zstandard.Net.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\BouncyCastle.Crypto.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\Ubiety.Dns.Core.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\K4os.Compression.LZ4.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\K4os.Hash.xxHash.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\bin\Debug\net8.0-windows\MySql.Data.xml
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.csproj.AssemblyReference.cache
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form_SIO_SQL.Form1.resources
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.csproj.GenerateResource.cache
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.AssemblyInfoInputs.cache
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.AssemblyInfo.cs
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.csproj.CoreCompileInputs.cache
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO.E9AA166E.Up2Date
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\refint\Form SIO SQL.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.pdb
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.genruntimeconfig.cache
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\ref\Form SIO SQL.dll
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form_SIO_SQL.Form2.resources
