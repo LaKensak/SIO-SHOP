@@ -42,5 +42,27 @@ namespace Form_SIO_SQL
             loginForm.Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e) // Saisir une vente
+        {
+            Vente SaisirVente = new Vente();
+            SaisirVente.Show();
+            this.Hide();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e) // Gestions Clients
+        {
+            GestionClients gestionClients = new GestionClients();
+            gestionClients.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e) // Gestions Produits
+        {
+            GestionProduits gestionProduits = new GestionProduits();
+            gestionProduits.Show();
+            this.Hide();
+        }
     }
 }

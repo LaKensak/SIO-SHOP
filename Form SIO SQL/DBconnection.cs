@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Form_SIO_SQL.Models;
+using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlTypes;
@@ -88,18 +89,40 @@ namespace Form_SIO_SQL
                 while (reader.Read())
                 {
                     Client cli = new Client(
-                        reader.GetInt32("id"),
+                        reader.GetInt32("Num_client"),
                         reader.GetString("nom"),
                         reader.GetString("prenom"),
                         reader.GetString("adresse"),
                         reader.GetString("mail"),
-                        reader.GetString("num_tel")
+                        reader.GetString("tel")
                     );
                     clients.Add(cli);
                 }
             }
 
             return clients;
+        }
+        public static List<Produit> GetProduits()
+        {
+            string query = "SELECT * FROM produit"; 
+            List<Produit> produits = new List<Produit>();
+
+            using (DbDataReader reader = ExecuteQuery(query))
+            {
+                while (reader.Read())
+                {
+                    Produit cli = new Produit(
+                        reader.GetInt32("reference"),
+                        reader.GetString("marque"),
+                        reader.GetString("nom"),
+                        reader.GetDecimal("prix"),
+                        reader.GetInt32("stock")
+                    );
+                    produits.Add(cli);
+                }
+            }
+
+            return produits;
         }
 
         public static bool VerificationUtilisateur(string username, string password)
@@ -158,20 +181,170 @@ namespace Form_SIO_SQL
                     // Ajout du paramètre username pour éviter les injections SQL
                     cmd.Parameters.AddWithValue("@username", username);
 
-                    using (var reader = cmd.ExecuteReader()) // Exécution de la requête et récupération des résultats
+                    using (var reader = cmd.ExecuteReader()) 
                     {
-                        if (reader.Read())  // Si l'utilisateur est trouvé
+                        if (reader.Read()) 
                         {
-                            nom = reader["nom"].ToString();  // Récupérer le nom
-                            prenom = reader["prenom"].ToString();  // Récupérer le nom
+                            nom = reader["nom"].ToString();  
+                            prenom = reader["prenom"].ToString();  
                         }
                     }
                 }
             }
 
-            return (nom,prenom);  // Retourner les informations sous forme de tuple
+            return (nom,prenom);  
+        }
+
+        public static bool GetClients(string id,string nom, string prenom,string adresse,string tel)
+        {
+            string query = "SELECT nom,prenom,adresse,mail,tel FROM client WHERE id = @id AND nom = @nom AND prenom = @prenom AND adresse = @adr AND tel = @tel";
+            using (MySqlConnection conn = GetDBConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@nom",nom);
+                    cmd.Parameters.AddWithValue("@prenom",prenom);
+                    cmd.Parameters.AddWithValue("@adr",adresse);
+                    cmd.Parameters.AddWithValue("@tel",tel);
+
+                    int userCount = Convert.ToInt32(cmd.ExecuteScalar());
+                    return userCount > 0; // Retourne true si un utilisateur est trouvé
+                }
+            }
+        }
+
+        public static bool AjoutClient(string nom, string prenom,string mail, string adresse, string tel)
+        {
+            string query = "INSERT INTO client (nom, prenom ,mail, adresse, tel) VALUES (@nom, @prenom, @mail, @adr, @tel)";
+            using (MySqlConnection conn = GetDBConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    // Ajouter les paramètres à la commande
+                    cmd.Parameters.AddWithValue("@nom", nom);
+                    cmd.Parameters.AddWithValue("@prenom", prenom);
+                    cmd.Parameters.AddWithValue("@mail", mail);
+                    cmd.Parameters.AddWithValue("@adr", adresse);
+                    cmd.Parameters.AddWithValue("@tel", tel);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    // Retourne true si au moins une ligne a été insérée
+                    return rowsAffected > 0;
+                }
+            }
+        }
+        public static bool AjoutProduit(string marque, string nom, string prix, string stock)
+        {
+            string query = "INSERT INTO produit (marque, nom, prix, stock) VALUES (@marque, @nom, @prix, @stock)";
+
+            using (MySqlConnection conn = GetDBConnection())
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@marque", marque);
+                    cmd.Parameters.AddWithValue("@nom", nom);
+                    cmd.Parameters.AddWithValue("@prix", prix);
+                    cmd.Parameters.AddWithValue("@stock", stock);
+
+                    try
+                    {
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            string lastInsertIdQuery = "SELECT LAST_INSERT_ID()";
+                            MySqlCommand lastIdCmd = new MySqlCommand(lastInsertIdQuery, conn);
+                            int lastInsertId = Convert.ToInt32(lastIdCmd.ExecuteScalar());
+
+                            Console.WriteLine($"Le Produit à été ajouter avec succès! ID: {lastInsertId}");
+                            return true;
+                        }
+
+                        return false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error: {ex.Message}");
+                        return false;
+                    }
+                }
+            }
         }
 
 
+        public static bool ModifierClient(string id, string nom, string prenom, string mail, string adresse, string tel)
+        {
+            // Correction de la requête SQL : UPDATE doit indiquer les colonnes à modifier
+            string query = "UPDATE client SET nom = @nom, prenom = @prenom, mail = @mail, adresse = @adr, tel = @tel WHERE Num_client = @id";
+
+            using (MySqlConnection conn = GetDBConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    // Ajouter les paramètres à la commande
+                    cmd.Parameters.AddWithValue("@id", id);  
+                    cmd.Parameters.AddWithValue("@nom", nom);
+                    cmd.Parameters.AddWithValue("@prenom", prenom);
+                    cmd.Parameters.AddWithValue("@mail", mail);
+                    cmd.Parameters.AddWithValue("@adr", adresse);
+                    cmd.Parameters.AddWithValue("@tel", tel);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    // Retourne true si au moins une ligne a été modifiée
+                    return rowsAffected > 0;
+                }
+            }
+        }
+        public static bool ModifierProduit(string reference, string marque, string nom, string prix, string stock)
+        {
+            // Correction de la requête SQL : UPDATE doit indiquer les colonnes à modifier
+            string query = "UPDATE produit SET marque = @marque, nom = @nom, prix = @prix, stock = @stock WHERE reference = @reference";
+
+            using (MySqlConnection conn = GetDBConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    // Ajouter les paramètres à la commande
+                    cmd.Parameters.AddWithValue("@reference", reference);  
+                    cmd.Parameters.AddWithValue("@marque", marque);
+                    cmd.Parameters.AddWithValue("@nom", nom);
+                    cmd.Parameters.AddWithValue("@prix", prix);
+                    cmd.Parameters.AddWithValue("@stock", stock);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    // Retourne true si au moins une ligne a été modifiée
+                    return rowsAffected > 0;
+                }
+            }
+        }
+        public static bool GetProduits(string nom, string reference, string marque, string prix, string stock)
+        {
+            string query = "SELECT reference,marque,nom,prix,stock FROM produit WHERE reference = @reference AND marque = @marque AND nom = @nom AND prix = @prix AND stock = @stock";
+            using (MySqlConnection conn = GetDBConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@reference", reference);
+                    cmd.Parameters.AddWithValue("@marque", marque);
+                    cmd.Parameters.AddWithValue("@nom", nom);
+                    cmd.Parameters.AddWithValue("@prix", prix);
+                    cmd.Parameters.AddWithValue("@stock", stock);
+
+                    int userCount = Convert.ToInt32(cmd.ExecuteScalar());
+                    return userCount > 0; // Retourne true si un utilisateur est trouvé
+                }
+            }
+        }
     }
 }

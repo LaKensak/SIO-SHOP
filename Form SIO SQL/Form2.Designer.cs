@@ -23,7 +23,7 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
-            button1 = new Button();
+            vente = new Button();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
@@ -37,14 +37,15 @@
             button5 = new Button();
             SuspendLayout();
             // 
-            // button1
+            // vente
             // 
-            button1.Location = new Point(313, 90);
-            button1.Name = "button1";
-            button1.Size = new Size(134, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Saisir une vente";
-            button1.UseVisualStyleBackColor = true;
+            vente.Location = new Point(313, 90);
+            vente.Name = "vente";
+            vente.Size = new Size(134, 23);
+            vente.TabIndex = 0;
+            vente.Text = "Saisir une vente";
+            vente.UseVisualStyleBackColor = true;
+            vente.Click += button1_Click;
             // 
             // button2
             // 
@@ -54,6 +55,7 @@
             button2.TabIndex = 1;
             button2.Text = "Gestion clients";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -63,6 +65,7 @@
             button3.TabIndex = 2;
             button3.Text = "Gestion produits";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -162,7 +165,7 @@
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(vente);
             Name = "Form2";
             Text = "Form2";
             ResumeLayout(false);
@@ -171,7 +174,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button vente;
         private Button button2;
         private Button button3;
         private Button button4;

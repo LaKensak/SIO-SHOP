@@ -26,3 +26,9 @@ C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windo
 C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form SIO SQL.genruntimeconfig.cache
 C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\ref\Form SIO SQL.dll
 C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form_SIO_SQL.Form2.resources
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form_SIO_SQL.Vente.resources
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form_SIO_SQL.GestionClients.resources
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form_SIO_SQL.GestionProduits.resources
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form_SIO_SQL.DetailClients.resources
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form_SIO_SQL.Properties.Resources.resources
+C:\Users\charkaoui\source\repos\Form SIO SQL\Form SIO SQL\obj\Debug\net8.0-windows\Form_SIO_SQL.AjoutClient.resources
